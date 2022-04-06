@@ -12,7 +12,7 @@ const Authors = require('./models/Author');
 // function listenPort() {
 //   console.log('Example app listening on port!')
 // }
-app.get('/authors', async (req, res) => {
+app.get('/authors', async (_req, res) => {
   const authors = await Authors.getAll();
   res.status(200).json(authors);
 });
