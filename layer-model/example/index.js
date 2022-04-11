@@ -16,4 +16,5 @@ app.get('/authors', async (_req, res) => {
   const authors = await Authors.getAll();
   res.status(200).json(authors);
 });
+
 app.listen(port, () => console.log(`Example port!`));

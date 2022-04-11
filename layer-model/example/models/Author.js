@@ -6,9 +6,9 @@ const connection = require('./connection');
 // executa uma query do banco de dados e retorna esse valor
 async function getAll() {
   // recebe o valor do obj connection
-  const [authors] = await connection.execute('SELECT id, first_name, middle_name, last_name FROM authors');
+  const result = await connection.execute('SELECT id, first_name, middle_name, last_name FROM authors');
 
-  return authors;
+  return result;
 };
 
 module.exports = {
