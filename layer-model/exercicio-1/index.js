@@ -3,10 +3,15 @@ const express = require("express");
 const app = express()
 const port = 3000
 
-const Books = require('./models/Books');
+const Book = require('./models/Books');
 
-app.get('/books', async(_req, res) => {
-  const books = await Books.getAll();
+app.get('/books', async(req, res) => {
+  const { author_id } = req.query;
+
+  const books = (author_id)
+  ? await Book.getByAuthorId(author_id)
+  : await Book.getAll();
+
   res.status(200).json(books);
 });
 
