@@ -30,6 +30,27 @@ async function getAll() {
   return authors.map(serialize).map(getNewAuthor);
 };
 
+// criação de novo método para achar o author pelo ID
+async function findById(id) {
+  const query = 'SELECT first_name, middle_name, last_name FROM model_example.authors WHERE id = ?'
+  const [ authorData ] = await connection.execute(query, [id]);
+
+  if (authorData.length === 0) {
+    return null;
+  }
+
+  // desestruturação dos parêmetros para retornar o author de interesse
+  const { firstName, middleName, lastName } = authorData.map(serialize)[0];
+
+  return getNewAuthor({
+    id,
+    firstName,
+    middleName,
+    lastName
+  });
+};
+
 module.exports = {
   getAll,
+  findById,
 }
