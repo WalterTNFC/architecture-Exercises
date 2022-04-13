@@ -51,24 +51,19 @@ async function findById(id) {
 };
 
 // metodo para verificar a validade
-function isValid(firstName, middleName, lastName) {
-  if(!firstName || typeof firstName !== 'string') {
-    return false;
-  }
-
-  if(!middleName || typeof middleName !== 'string') {
-    return false;
-  }
+const isValid = (firstName, middleName, lastName) => {
+  if (!firstName || typeof firstName !== 'string') return false;
+  if (!lastName || typeof lastName !== 'string') return false;
+  if (middleName && typeof middleName !== 'string') return false;
 
   return true;
-}
+};
 
-async function create(firstName, middleName, lastName) {
-  connection.execute(
-    'INSERT INTO model_example.authors (firstName, middleName, lastName) VALUES (?, ?, ?)'
-    [firstName, middleName, lastName]
-  );
-}
+const create = async (firstName, middleName, lastName) => connection.execute(
+  'INSERT INTO model_example.authors (first_name, middle_name, last_name) VALUES (?,?,?)',
+  [firstName, middleName, lastName],
+);
+
 module.exports = {
   getAll,
   findById,

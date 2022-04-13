@@ -31,5 +31,16 @@ app.get('/authors/:id', async (req, res) => {
 });
 
 // post -> para mudança de dados
+app.post('/authors', async (req, res) => {
+  const { first_name, middle_name, last_name } = req.body;
+
+  if (!Authors.isValid(first_name, middle_name, last_name)) {
+      return res.status(400).json({ message: 'Dados inválidos' });
+  }
+
+  await Authors.create(first_name, middle_name, last_name);
+
+  res.status(201).json({ message: 'Autor criado com sucesso! '});
+});
 
 app.listen(port, () => console.log(`Example port!`));
