@@ -1,9 +1,10 @@
+const bodyParser = require("body-parser");
 const express = require("express");
 const app = express()
 const port = 3000
 
 const Authors = require('./models/Author');
-
+app.use(bodyParser.json());
 // async function callback(_param, res) {
 //   const authors = await authors.getAll();
 //   return res.status(200).json(authors);
@@ -28,5 +29,7 @@ app.get('/authors/:id', async (req, res) => {
   // se existir, retorna status 200 e o nome do autor
   res.status(200).json(author)
 });
+
+// post -> para mudança de dados
 
 app.listen(port, () => console.log(`Example port!`));
