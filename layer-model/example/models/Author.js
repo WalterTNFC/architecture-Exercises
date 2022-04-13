@@ -32,7 +32,7 @@ async function getAll() {
 
 // criação de novo método para achar o author pelo ID
 async function findById(id) {
-  const query = 'SELECT first_name, middle_name, last_name FROM model_example.authors WHERE id = ?'
+  const query = 'SELECT first_name, middle_name, last_name FROM model_example.authors WHERE id=?'
   const [ authorData ] = await connection.execute(query, [id]);
 
   if (authorData.length === 0) {

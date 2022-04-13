@@ -18,7 +18,7 @@ app.get('/authors', async (_req, res) => {
 });
 
 // ':' -> parametro de rotas
-app.get('/authors/:id'), async (req, res) => {
+app.get('/authors/:id', async (req, res) => {
   const { id } = req.params;
 
   const author = await Authors.findById(id);
@@ -27,7 +27,6 @@ app.get('/authors/:id'), async (req, res) => {
 
   // se existir, retorna status 200 e o nome do autor
   res.status(200).json(author)
-  
-}
+});
 
 app.listen(port, () => console.log(`Example port!`));
