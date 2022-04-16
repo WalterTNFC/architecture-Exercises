@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const Author = require('./models/Author');
+const Author = require('../models/Author');
 
 const app = express();
 
