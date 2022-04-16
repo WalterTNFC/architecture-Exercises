@@ -38,3 +38,9 @@ app.post('authors', async (req, res) => {
 
   res.status(201).json({ message: 'Pessoa autora criada com sucesso!' });
 });
+
+const PORT = 3000;
+
+app.listen(PORT, () => {
+  console.log(`Ouvindo a porta ${PORT}`);
+});
