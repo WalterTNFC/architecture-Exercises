@@ -1,9 +1,9 @@
 const bodyParser = require("body-parser");
 const express = require("express");
-const app = express()
-const port = 3000
+const app = express();
+const port = 3000;
 
-const Authors = require('./models/Author');
+const Authors = require('./hello-msc/models/Author');
 app.use(bodyParser.json());
 // async function callback(_param, res) {
 //   const authors = await authors.getAll();
